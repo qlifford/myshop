@@ -14,7 +14,7 @@ include('includes/header.php');
                     ?>
                     <div class="alert alert-light alert-dismissible fade show" role="alert">
                     <strong></strong> <?= $_SESSION['message'];?>
-                    <input type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label class="mb-0" value="Close"></input>
+                    <input type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label class="mb-0"></input>
                     </div>
                     
                      <?php

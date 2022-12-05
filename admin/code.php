@@ -1,5 +1,5 @@
       <?php
-   
+   session_start();
       include ('../dbcon.php');
       include('../myfunctions.php');
 
@@ -17,7 +17,7 @@
 
                      $image = $_FILES['image']['name'];
                   
-                     $path = "../uploads";
+                     $path = "uploads";
                      $image_ext = pathinfo( $image, PATHINFO_EXTENSION);
                      $filename = time().'.'.$image_ext;
 
@@ -147,32 +147,28 @@
             $meta_keywords          = $_POST['meta_keywords'];
 
             $image = $_FILES['image']['name'];
-         
-            $path = "../uploads";
+                  
+            $path = "uploads";
             $image_ext = pathinfo( $image, PATHINFO_EXTENSION);
             $filename = time().'.'.$image_ext;
 
 
 
-            //  $product_query = "INSERT INTO products(name, slug, small_description, description, original_price, selling_price, image, qty, status, trending, meta_title, meta_keywords, meta_description, created_on) VALUES ('$name','$slug','$small_description','$description','$original_price','$selling_price','$filename','$qty','$status','$trending','$meta_title','$meta_keywords','$meta_description','$created_on')";
+            $query = "insert into products (name,slug,small_description,description,original_price,selling_price,image,qty,status,trending,meta_title,meta_keywords,meta_description) values('$name','$slug','$small_description','$description','$original_price','$selling_price','$filename','$qty','$status','$trending','$meta_title','$meta_keywords','$meta_description') 
+            VALUES('$name','$slug','$description','$original_price','$selling_price','$filename','$qty','$status','$trending','$meta_title','$meta_keywords','$meta_description')";
 
-            //  $product_query_run = mysqli_query($con, $product_query);
-            //  if ($product_query_run) {
-   
-                move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$filename);
-               redirect("add-product.php", "Product added successfully");
+            $query_run = mysqli_query($con, $query);
 
-
-            }else{
-               redirect("add-product.php", "Error occured");
-
-      }
-      
-    
-            
-          
+               if ($query_run) {
+               
+                 move_uploaded_file($_FILES['image']['tmp_name'], $path.'/'.$filename);
+                  redirect("add-product.php", "Product added successfully");
 
 
+         }else{
+            redirect("add-product.php", "Error occured");
 
+         }
+   }
 
 ?>
