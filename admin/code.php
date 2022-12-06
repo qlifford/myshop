@@ -120,6 +120,7 @@
                                           }
                         
                               redirect("category.php", "Category deleted!");
+                              $_SESSION['status_code'] = "info";
 
             }else{
 

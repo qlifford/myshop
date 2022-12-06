@@ -8,7 +8,7 @@ include('includes/header.php');
     <div class="row">
         <div class="col-md-12">
 
-                        <?php 
+                        <!-- <?php 
                             if(isset($_SESSION['message'])) 
                             {?>
                                 <div class="alert alert-light alert-dismissible fade show" role="alert">
@@ -18,7 +18,7 @@ include('includes/header.php');
 
                                 <?php
                                 unset($_SESSION['message']);
-                                    }?>
+                                    }?> -->
 
 
             <div class="card">
