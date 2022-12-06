@@ -120,7 +120,7 @@
                                           }
                         
                               redirect("category.php", "Category deleted!");
-                              $_SESSION['status_code'] = "info";
+                              $_SESSION['status_code'] = "warning";
 
             }else{
 
