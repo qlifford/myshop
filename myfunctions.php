@@ -1,8 +1,9 @@
 <?php
 session_start();
-function redirect($url, $message)
+function redirect($url, $status)
 {
-    $_SESSION['message'] = $message;
+    $_SESSION['status'] = $status;
+    
     header('location: '.$url); 
     exit();
 }

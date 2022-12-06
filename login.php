@@ -5,7 +5,8 @@
     include('includes/header.php');
 
     if(isset($_SESSION['auth'])){
-            $_SESSION['message'] = "Logged in!";
+            $_SESSION['status'] = "Logged in!";
+            $_SESSION['status_code'] = "info";
                 header('location: index.php');
                 exit();
     }
@@ -18,18 +19,6 @@
                 <div class="col-3"></div>
                 <div class="col-6">
 
-                        <?php 
-                            if(isset($_SESSION['message'])) 
-                            {?>
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong></strong> <?= $_SESSION['message'];?>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>
-
-                                <?php
-                                unset($_SESSION['message']);
-                                    }?>
-
                     <div class="card">
                             <div class="card-header text-center">
                             <h4>Please login</h4>
@@ -38,7 +27,7 @@
                                     <form action="authcode.php" method="post">
                                     
                                     <div class="mb-3">
-                                        <label class="form-label" class="form-label">Username</label>
+                                        <label class="form-label" class="form-label">Username or email</label>
                                         <input type="text" name="name" class="form-control" placeholder="Enter username">
                                     </div>
 <!-- 

@@ -18,7 +18,7 @@ include ('dbcon.php');
                     $num = mysqli_num_rows($result_query);
                     // echo $num;
                     if($num > 0){
-                        $_SESSION['message'] = "Sorry,Email already taken!";
+                        $_SESSION['status'] = "Sorry,Email already taken!";
                         header('location: register.php');
             }
             else{
@@ -27,17 +27,20 @@ include ('dbcon.php');
                             VALUES('$name','$email','$phone','$password')";
                             $insert_query_run = mysqli_query($con, $insert_query);
                             if ($insert_query_run) {
-                                $_SESSION['message'] = "Registration successful!";
+                                $_SESSION['status'] = "Registration successful!";
+                                $_SESSION['status_code'] = "success";
                                 header('location: login.php');
                     
                         }else{
-                            $_SESSION['message'] = "An error occured!";
+                            $_SESSION['status'] = "An error occured!";
+                            $_SESSION['status_code'] = "warning";
                             header('location: register.php');
                         }                        
                     }
                     else
                     {
-                    $_SESSION['message'] = "Please enter matching passwords!";
+                    $_SESSION['status'] = "Please enter matching passwords!";
+                    $_SESSION['status_code'] = "warning";
                         header('location: register.php');
                     }
                     }
@@ -56,13 +59,13 @@ include ('dbcon.php');
                 $_SESSION['auth'] = "true";
 
                 $userdata = mysqli_fetch_array($result_query);
-                // $useremail= $userdata['email'];
+                $useremail= $userdata['email'];
                 $username= $userdata['name'];
                 $userpassword = $userdata['password'];
                 $role_as = $userdata['role_as'];
 
                 $_SESSION['auth_user'] = [
-                    // 'email'     => $useremail,
+                    'email'     => $useremail,
                     'name'      => $username,
                     'password'   => $userpassword
                 ];  
@@ -70,18 +73,21 @@ include ('dbcon.php');
 
                 if($role_as == 1)
                     {
-                    $_SESSION['message'] = "Welcome to Admin dashboard!";
+                    $_SESSION['status'] = "Welcome to Admin dashboard!";
+                    $_SESSION['status_code'] = "info";
                     header('location: admin/index.php');  
                 }
 
                 else{
-                $_SESSION['message'] = "Congrats you logged in successfully!";
+                $_SESSION['status'] = "Congrats you logged in successfully!";
+                $_SESSION['status_code'] = "success"; 
                     header('location: index.php'); 
                 }
             }
             else
             {
-                $_SESSION['message'] = "Name or password is invalid!";
+                $_SESSION['status'] = "Name or password is invalid!";
+                $_SESSION['status_code'] = "error";
                 header('location: login.php');  
             }
         }   

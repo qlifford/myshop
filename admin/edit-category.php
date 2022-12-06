@@ -18,7 +18,7 @@ include('includes/header.php');
                         $data = mysqli_fetch_array($category);
             
                     ?>
-
+<!-- 
 
                         <?php 
                             if(isset($_SESSION['message'])) 
@@ -30,7 +30,7 @@ include('includes/header.php');
 
                                 <?php
                                 unset($_SESSION['message']);
-                                    }?>
+                                    }?> -->
                             <div class="card">
                                 <div class="card-header">
                                     <h4>Edit Category</h4>
